@@ -112,7 +112,7 @@ class Query(Base):
             f'Wind degree: {self.wind_deg}°\n'
             f'Wind direction: {self.wind_direction}\n'
             f'Wind code: {self.wind_code}\n'
-            f'Cloudiness: {self.cloudiness}\n'
+            f'Cloudiness: {self.cloudiness}%\n'
             f'Sunrise: {self.sunrise}\n'
             f'Sunset: {self.sunset}\n'
             f'Timestamp (UTC): {self.utc_timestamp}\n'

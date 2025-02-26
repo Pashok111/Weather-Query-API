@@ -231,11 +231,14 @@ async def get_queries(
 ) -> Union[List[WeatherResponse], Error]:  # noqa
     limit = filter_query.limit
     offset = filter_query.offset
+    descending = filter_query.descending
 
     db = SessionLocal()
     try:
         db_queries = db.query(
             DB_Query
+        ).order_by(
+            DB_Query.id.desc() if descending else DB_Query.id.asc()
         ).limit(limit).offset(limit * offset).all()
         if len(db_queries) == 0:
             response.status_code = status.HTTP_400_BAD_REQUEST
