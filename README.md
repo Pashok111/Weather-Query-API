@@ -1,5 +1,8 @@
 # Weather Query API
 A small project for querying weather information by city name using [OpenWeatherMap](https://openweathermap.org/).
+
+You can check this working with the API at: [Weather Query](https://pashok11.tw1.su/weather_query)
+
 You can check this API at: [Weather Query API Docs](https://pashok11.tw1.su/apis/weather_query/docs)
 ## How to Use
 ### Tested Environments
