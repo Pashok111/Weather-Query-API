@@ -1,0 +1,31 @@
+name: weather-query-api
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:9.2.19-alpine
+    env_file: ./.env
+    restart: always
+    ports:
+      - "${POSTGRES_PORT}:${POSTGRES_PORT}"
+    volumes:
+      - db:/var/lib/postgresql/data
+    command: -p ${POSTGRES_PORT}
+  api:
+    build: .
+    env_file: ./.env
+    environment:
+      POSTGRES_HOST: postgres
+    restart: on-failure
+    ports:
+      - "${PORT}:${PORT}"
+    volumes:
+      - logs:/app/${LOGS_DIR}
+    depends_on:
+      - postgres
+    links:
+      - postgres
+
+volumes:
+  db:
+  logs:
