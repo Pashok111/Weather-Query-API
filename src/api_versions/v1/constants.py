@@ -3,7 +3,7 @@ Constants for API v1
 Used in database.py and routes.py
 """
 
-from configurator import MainConfigurator
+from ...configurator import MainConfigurator
 
 __all__ = [
     'API_VERSION',

@@ -33,13 +33,10 @@ ENV APP=/app
 RUN mkdir $APP
 WORKDIR $APP
 
+COPY ./static/ ./static/
+COPY ./start_app.py ./
+COPY src/ ./src/
 COPY ./.env ./
 COPY ./.env.api ./
-COPY ./main.py ./
-COPY ./api_versions/ ./api_versions/
-COPY ./configurator/ ./configurator/
-COPY ./logger/ ./logger/
-COPY ./open_weather_api/ ./open_weather_api/
-COPY ./static/ ./static/
 
-ENTRYPOINT ["python", "main.py"]
+ENTRYPOINT ["python", "start_app.py"]

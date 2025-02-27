@@ -11,8 +11,7 @@ from datetime import datetime, timezone
 from sqlalchemy import Column, Float, ForeignKey, Integer, String
 from sqlalchemy import create_engine
 from sqlalchemy.engine import URL
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship, sessionmaker
+from sqlalchemy.orm import declarative_base, relationship, sessionmaker
 
 # Imports from project
 from . import constants

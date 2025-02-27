@@ -15,9 +15,6 @@ except ImportError:
 from fastapi import APIRouter, Query, Request, Response, status
 from fastapi.responses import RedirectResponse
 
-# Imports from project
-from open_weather_api import APIError, OpenWeatherAPI
-
 # Import from this API version
 from . import constants
 from .database import City as DB_City, Query as DB_Query, SessionLocal
@@ -26,6 +23,8 @@ from .pydantic_models import (
     GetWeathersQueryParams,
     WeatherResponse
 )
+# Imports from project
+from ...open_weather_api import APIError, OpenWeatherAPI
 
 main_router = APIRouter()
 open_weather_api = OpenWeatherAPI()

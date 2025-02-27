@@ -12,22 +12,11 @@ from fastapi.openapi.docs import (
 from fastapi.staticfiles import StaticFiles
 
 # Imports from project
-from api_versions import API_LATEST, API_VERSIONS  # noqa: I100
-
-from configurator import MainConfigurator
-
-from logger import Logger
+from .api_versions import API_LATEST, API_VERSIONS  # noqa: I100
+from .configurator import MainConfigurator
 
 # Config loading
 config = MainConfigurator()
-
-# Logger initialization
-logger = Logger(
-    logger_name=config.api_name,
-    save_logs=config.save_logs,
-    logs_dir=config.logs_dir,
-    log_filename=config.log_filename
-)
 
 DESCRIPTION = (f'This is the {config.api_name} API.\n\n'
                f'You can check the docs at {config.main_api_address}/docs '
@@ -105,22 +94,3 @@ for version in API_VERSIONS:
         prefix=config.main_api_address + f'/v{version.API_VERSION}',
         tags=[f'v{version.API_VERSION}']
     )
-
-if __name__ == '__main__':
-    import uvicorn
-    uvicorn_config = {
-        'app': 'main:app',
-        'host': config.host,
-        'port': config.port,
-        'log_config': logger.logging_config(),
-    }
-    if config.dev:
-        uvicorn_config['reload'] = True
-        uvicorn_config['reload_includes'] = [
-            'api_versions',
-            'configurator',
-            'logger',
-            'open_weather_api',
-            'main.py'
-        ]
-    uvicorn.run(**uvicorn_config)

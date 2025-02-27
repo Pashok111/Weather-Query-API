@@ -1,0 +1,11 @@
+pytest
+pytest-flake8
+flake8_annotations_complexity
+flake8-blind-except
+flake8-builtins
+flake8_comprehensions
+flake8-deprecated
+flake8-fixme
+flake8-import-order
+flake8-quotes
+flake8_variables_names
